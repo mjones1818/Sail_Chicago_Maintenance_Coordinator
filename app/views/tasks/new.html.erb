@@ -1,0 +1,44 @@
+<h1>Create new task</h1>
+<br>
+<br>
+<form action="/tasks" method="post">
+
+  
+
+  <h4>New task</h4>
+  <input type="text" name="task[name]" id="">
+  <br>
+  <h4>Description</h4>
+  <textarea name="task[description]" id="" cols="30" rows="10"></textarea>
+  <br>
+  <h4>Procedure</h4>
+  <textarea name="task[procedure]" id="" cols="30" rows="10"></textarea>
+  <br>
+  <h4>Boat</h4>
+    <select name="task[sailboat_id]" id="">
+      <% @boat_types.each do |boat_type|%>
+        <optgroup label="<%= boat_type %>">
+        <% @sailboats.each do |sailboat| %>
+          <% if sailboat.boat_type == boat_type %>
+            <option value="<%=  sailboat.id%>"><%=  sailboat.name%></option>
+          <% end %>
+        <% end %> 
+        </optgroup>
+      <% end %>  
+    </select>
+  <br>
+  <h4>Members</h4>
+    <% @users.each do |user|%>
+      <input type="checkbox" name="task[user][]" id="" value="<%= user.id.to_i %>">
+      <label for="task[user][]"><%= user.username %></label>
+      <br>
+    <% end %>
+  <br>
+  <h4>Date completed</h4>
+  <input type="datetime-local" name="task[date_completed" id="">
+  <h4>Due date</h4>
+  <input type="datetime-local" name="task[date_due]" id="">
+  <br>
+  <br> 
+  <button type="submit">Create task</button>
+</form>

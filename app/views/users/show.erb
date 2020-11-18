@@ -1,0 +1,49 @@
+<h1>User profile</h1>
+<br>
+<br>
+<h3>Username: </h3> <%= @user.username %>
+
+<br>
+<br>
+<h3>Email: </h3> <a href="mailto:<%= @user.email %>"><%= @user.email %></a>
+
+<br>
+<br>
+<h3>Tasks completed: </h3>
+<% @user.tasks.each do |task| %>
+  <ul>
+    <% if task.date_completed %>
+      <li><%= task.date_completed %> - <a href="../tasks/<%= task.id %>"><%= task.name %></a></li>
+    <% end %>
+  </ul>
+<% end %>
+<br>
+<br>
+<h3>Tasks to complete: </h3>
+<% @user.tasks.each do |task| %>
+  <ul>
+    <% if task.date_due %>
+      <li><%= task.date_due %> - <a href="../tasks/<%= task.id %>"><%= task.name %></a></li>
+    <% end %>
+  </ul>
+<% end %>
+<br>
+<br>
+<h3>Boats worked on: </h3>
+<% @boats_array.uniq.each do |boat| %>
+  <ul>
+      <li><a href="../sailboats/<%= boat.id %>"><%= boat.name %></a></li>
+  </ul>
+<% end %>
+<br>
+<br>
+<% if has_access? %>
+    <form action="/users/<%= params[:id] %>/edit" method="get">
+    <button type="submit">Edit this user</button>
+    </form>
+    <br>
+    <form action="/users/<%= params[:id] %>/delete" method="post">
+    <button type="submit">Delete this user</button>
+    </form>
+<% end %>
+

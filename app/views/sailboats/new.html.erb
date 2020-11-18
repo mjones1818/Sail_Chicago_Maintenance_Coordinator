@@ -1,0 +1,17 @@
+<h1>Create new sailboat</h1>
+<br>
+<br>
+<form action="/sailboats" method="post">
+<label for="sailboat[name]"> Sailboat name: </label>
+<input type="text" name="sailboat[name]" id="">
+<br>
+<h4>Boat type: </h4>
+
+<% BOAT_TYPES.each do |boat_type| %>
+  <input type="radio" name="sailboat[boat_type]" id="<%= boat_type %>" value="<%= boat_type %>">
+  <label for="sailboat[boat_type]"><%= boat_type %></label> 
+<% end %>
+
+<br>
+<button type="submit">Create new sailboat</button>
+</form>

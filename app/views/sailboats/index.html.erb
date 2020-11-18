@@ -1,0 +1,46 @@
+<h1>All Sailboats</h1>
+
+<h3>Colgates: </h3>
+
+  <ul>
+  <% @sailboats.each do |sailboat| %>
+    <% if sailboat.boat_type == "Colgate" %>
+      <li><a href="/sailboats/<%= sailboat.id %>"> <%= sailboat.name %></a></li>
+    <% end %>
+  <% end %>
+  </ul>
+
+  <h3>Rhodes: </h3>
+
+  <ul>
+  <% @sailboats.each do |sailboat| %>
+    <% if sailboat.boat_type == "Rhodes" %>
+      <li><a href="/sailboats/<%= sailboat.id %>"> <%= sailboat.name %></a></li>
+    <% end %>
+  <% end %>
+  </ul>
+
+  <h3>Ideals: </h3>
+
+  <ul>
+  <% @sailboats.each do |sailboat| %>
+    <% if sailboat.boat_type == "Ideal" %>
+      <li><a href="/sailboats/<%= sailboat.id %>"> <%= sailboat.name %></a></li>
+    <% end %>
+  <% end %>
+  </ul>
+
+  <h3>Cruisers: </h3>
+
+  <ul>
+  <% @sailboats.each do |sailboat| %>
+    <% if sailboat.boat_type == "Cruiser" %>
+      <li><a href="/sailboats/<%= sailboat.id %>"> <%= sailboat.name %></a></li>
+    <% end %>
+  <% end %>
+  </ul>
+<br>
+<br>
+<form action="/sailboats/new" method="get">
+<button type="submit">Create new sailboat</button>
+</form>

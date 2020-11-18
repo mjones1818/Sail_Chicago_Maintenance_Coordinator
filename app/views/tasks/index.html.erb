@@ -1,0 +1,24 @@
+<h1>All Tasks</h1>
+
+  <table>
+    <tr>
+      <th>Boat Type</th>
+      <th>Boat Name</th>
+      <th>Task</th>
+      <th>Date</th>
+      
+    </tr>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.sailboat.boat_type %></td>
+        <td><a href="/sailboats/<%= task.sailboat.id %>"><%= task.sailboat.name %></a></td>
+        <td><a href="/tasks/<%= task.id %>"><%= task.name %></a></td>
+        <td><%= task.date_completed || task.date_due %></td>
+      </tr>
+    <% end %>
+  </table>
+<br>
+<br>
+<form action="/tasks/new" method="get">
+  <button type="submit">Create new task</button>
+</form>

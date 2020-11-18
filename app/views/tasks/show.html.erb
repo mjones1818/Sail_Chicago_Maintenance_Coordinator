@@ -1,0 +1,36 @@
+<h1><%= @task.name %></h1>
+<br>
+<br>
+<h3>Boat name: <a href="/sailboats/<%= @task.sailboat.id %>"><%= @task.sailboat.name %></a></h3> 
+<h3>Description: </h3>
+<%= @task.description %>
+<br>
+<br>
+
+<% if @task.date_completed %>
+    <h3>Date completed: </h3>
+    <%= @task.date_completed %>
+<% else %>
+    <h3>Due date: </h3>
+    <%= @task.date_due %>
+<% end %>
+<br>
+<br>
+<h3>Procedure: </h3>
+<%= @task.procedure unless nil %>
+<br>
+<br>
+<% if !@task.users.empty? %>
+    <h3>Completed by:</h3>
+        <% @task.users.each do |user|%>
+            <a href="/users/<%= user.id %>"><%=  user.username%> </a>
+            <br> 
+        <% end  %>
+<% end %>
+<br>
+<br>
+<form action="/tasks/<%= @task.id %>/delete" method="post">
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <button type="submit">Delete this task</button>
+</form>
+

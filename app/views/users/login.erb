@@ -1,0 +1,16 @@
+<h1>Login</h1>
+<br>
+<%  if flash[:message]%>
+  <h4><%= flash[:message] %></h4>
+<% end %>
+<br>
+<h3>Login Info</h3>
+
+<form action="/login" method="post">
+<label for="user[name]"> Username: </label><input type="text" name="user[username]" id=""><br>
+<label for="user[password]">Password: </label> <input type="password" name="user[password]" id=""><br>
+<button type="submit">Login</button>
+</form>
+<br>
+<br>
+Don't have an account? <a href="/signup">Signup</a>

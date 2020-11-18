@@ -1,0 +1,37 @@
+<h1><%= @sailboat.name %></h1>
+<br>
+<h2><%= @sailboat.boat_type %></h2>
+<br>
+<br>
+<h3>Completed tasks:</h3>
+<ol>
+  <% @sailboat.tasks.each do |task| %>
+    <% if task.date_completed %>
+      <li><%= task.date_completed %> - <a href="/tasks/<%= task.id %>"><%= task.name %></a></li>
+    <% end %>
+  <% end %>
+</ol>
+
+<h3>Upcoming tasks:</h3>
+<ol>
+  <% @sailboat.tasks.each do |task| %>
+    <% if task.date_due %>
+      <li><a href="/tasks/<%= task.id %>"><%= task.name %></a></li>
+    <% end %>
+  <% end %>
+</ol>
+<br>
+<br>
+<form action="/tasks/new" method="get">
+<button type="submit">Create new task</button>
+</form>
+<br>
+<form action="/sailboats/<%= params[:id] %>/edit" method="get">
+<button type="submit">Edit this sailboat</button>
+</form>
+<br>
+<form action="/sailboats/<%= params[:id] %>/delete" method="post">
+<button type="submit">Delete this sailboat</button>
+</form>
+
+

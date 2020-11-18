@@ -1,0 +1,8 @@
+<h1>All Members</h1>
+
+  <% @users.each_with_index do |user, index| %>                    
+      <ul>
+        <li><a href="/users/<%= user.id %>"><%= user.username %></a> - <%= user.email %></li>
+ 
+      </ul>
+  <% end %>

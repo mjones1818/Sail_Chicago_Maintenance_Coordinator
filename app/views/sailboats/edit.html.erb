@@ -1,0 +1,21 @@
+<h1>Edit sailboat</h1>
+<br>
+<br>
+<form action="/sailboats/<%= @sailboat.id %>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  <label for="sailboat[name]">Name: </label>
+  <input type="text" name="sailboat[name]" id="" value="<%= @sailboat.name %>">
+  <br>
+  <h3>Boat type</h3>
+  <% @boat_types.uniq.each do |boat_type| %>
+    <input type="radio" name="sailboat[boat_type]" id="<%= boat_type %>" value="<%= boat_type %>"
+    <% if @sailboat.boat_type == boat_type %>
+      <%=  "checked"%>
+    <% end %>
+    >
+    <label for="sailboat[boat_type]"><%= boat_type %></label> 
+  <% end %> 
+  <br>
+  <button type="submit">Edit</button>
+
+</form>
