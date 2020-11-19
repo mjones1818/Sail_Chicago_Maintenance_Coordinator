@@ -22,10 +22,15 @@ class TasksController < ApplicationController
   # POST: /tasks
   post "/tasks" do
     secure_page
-    task_hash = params[:task].reject {|key, value| key == "user" || value == ""}
-    task = Task.create(task_hash)
-    params[:task][:user].each {|user_id| task.users << User.find(user_id)}
-    redirect "/tasks"
+    if params[:task][:user].include?(current_user)
+      task_hash = params[:task].reject {|key, value| key == "user" || value == ""}
+      task = Task.create(task_hash)
+      params[:task][:user].each {|user_id| task.users << User.find(user_id)}
+      redirect "/tasks"
+    else
+      flash.next[:message] = "You must select yourself to create a new task"
+      redirect '/tasks/new'
+    end
   end
 
   # GET: /tasks/5
@@ -38,13 +43,22 @@ class TasksController < ApplicationController
   # GET: /tasks/5/edit
   get "/tasks/:id/edit" do
     secure_page
+    @users = User.all
+    @task =Task.find(params[:id])
+    @sailboats = Sailboat.all
+    @boat_types = @sailboats.map {|sailboat| sailboat.boat_type}.uniq
     erb :"/tasks/edit.html"
   end
 
   # PATCH: /tasks/5
   patch "/tasks/:id" do
     secure_page
-    redirect "/tasks/:id"
+    task = Task.find(params[:id])
+    task_hash = params[:task].reject {|key, value| key == "user" || value == ""}
+    task.update(task_hash)
+    task.users.clear
+    params[:task][:user].each {|user_id| task.users << User.find(user_id)}
+    redirect "/tasks/#{task.id}"
   end
 
   # DELETE: /tasks/5/delete

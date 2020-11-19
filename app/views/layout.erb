@@ -14,15 +14,20 @@
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
   <body>
+
     <ul class="nav_header" id="nav_header">
+      <li><a href="/"><img src="/images/sail_chicago_logo.png" class="nav_header" id="logoimage"></a></li>
       <li><a href="/">Home</a></li>
       <li><a href="/users">Users</a></li>
       <li><a href="/sailboats">Sailboats</a></li>
       <li><a href="/tasks">Tasks</a></li>
       <li><a href="/logout">Logout</a></li>
-      <li id="username"><a href="/users/<%=  current_user.id%>"><%=  current_user.username%></a></li>
+      <% if logged_in? %>
+        <li id="username"><a href="/users/<%=  current_user.id%>"><%=  current_user.username%></a></li>
+      <% end %>
     </ul> 
     <div class="wrapper">
+        
         <% if logged_in? || allowed_page %>
           <%= yield %>
         <% end %>

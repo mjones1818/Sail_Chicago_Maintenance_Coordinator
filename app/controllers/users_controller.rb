@@ -55,9 +55,14 @@ class UsersController < ApplicationController
 
   patch "/users/:id" do
     secure_page
-    user = User.find(params[:id])
-    user.update(params[:user])
-    redirect "/users/#{user.id}"
+    if has_access?
+      user = User.find(params[:id])
+      user.update(params[:user])
+      redirect "/users/#{user.id}"
+    else
+      flash.next[:message] = "You can not edit this user's profile!"
+      redirect '/users'
+    end
   end
 
   post "/users/:id/delete" do

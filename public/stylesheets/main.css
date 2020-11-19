@@ -17,6 +17,11 @@
     color: black);
     font-family: Sans-Serif;
     line-height: 18px;
+    background-image: url(../images/albatross3.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    
   }
 
   .wrapper {
@@ -28,6 +33,7 @@
     max-width: 960px;
     padding: 2.25%; /* 18px / 800px */
     width: 85%;
+    opacity: .9;
   }
 
   h1 {
@@ -85,7 +91,7 @@
   ul.nav_header {
     list-style-type: none;
     margin: 0;
-    padding: .5%;
+    padding: 0;
     overflow: hidden;
     background-color: #333;
   }
@@ -96,12 +102,19 @@
   #username {
     float: right;
   }
+  #logoimage {
+    height: 35px;
+    max-height: 100%;
+    width: 35px;
+    max-width: 100%;
+}
+
   
   ul.nav_header li a {
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 16px 16px;
     text-decoration: none;
   }
   

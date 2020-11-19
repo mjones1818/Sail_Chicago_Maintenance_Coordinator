@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201116202653) do
+ActiveRecord::Schema.define(version: 20201119163927) do
 
   create_table "sailboats", force: :cascade do |t|
     t.string   "name"
@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 20201116202653) do
   create_table "tasks", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.date     "date_completed"
-    t.date     "date_due"
+    t.datetime "date_completed"
+    t.datetime "date_due"
     t.integer  "sailboat_id"
     t.text     "procedure"
     t.datetime "created_at",     null: false

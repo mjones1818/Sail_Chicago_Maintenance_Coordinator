@@ -1,10 +1,11 @@
 <h1>Create new task</h1>
 <br>
 <br>
+<%  if flash[:message]%>
+  <h4><%= flash[:message] %></h4>
+  <br>
+<% end %>
 <form action="/tasks" method="post">
-
-  
-
   <h4>New task</h4>
   <input type="text" name="task[name]" id="">
   <br>
@@ -29,7 +30,9 @@
   <br>
   <h4>Members</h4>
     <% @users.each do |user|%>
-      <input type="checkbox" name="task[user][]" id="" value="<%= user.id.to_i %>">
+      <input type="checkbox" name="task[user][]" id="" value="<%= user.id.to_i %>" 
+      <%= "checked" if current_user == user%> <%= "required" if current_user == user %>
+      >
       <label for="task[user][]"><%= user.username %></label>
       <br>
     <% end %>

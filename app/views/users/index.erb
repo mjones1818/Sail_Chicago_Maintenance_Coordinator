@@ -1,5 +1,10 @@
 <h1>All Members</h1>
-
+<%  if flash[:message]%>
+  <br>
+  <h4><%= flash[:message] %></h4>
+  <br>
+<% end %>
+<br>
   <% @users.each_with_index do |user, index| %>                    
       <ul>
         <li><a href="/users/<%= user.id %>"><%= user.username %></a> - <%= user.email %></li>

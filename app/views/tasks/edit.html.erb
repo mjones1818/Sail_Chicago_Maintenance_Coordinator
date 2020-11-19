@@ -1,1 +1,42 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<h1>Edit task</h1>
+<br>
+<br>
+<form action="/tasks/<%= @task.id %>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  <h4>Edit task</h4>
+  <input type="text" name="task[name]" id="" value="<%= @task.name %>">
+  <br>
+  <h4>Description</h4>
+  <textarea name="task[description]" id="" cols="30" rows="10"><%= @task.description %></textarea>
+  <br>
+  <h4>Procedure</h4>
+  <textarea name="task[procedure]" id="" cols="30" rows="10"><%= @task.procedure %></textarea>
+  <br>
+  <h4>Boat</h4>
+    <select name="task[sailboat_id]" id="">
+      <% @boat_types.each do |boat_type|%>
+        <optgroup label="<%= boat_type %>">
+        <% @sailboats.each do |sailboat| %>
+          <% if sailboat.boat_type == boat_type %>
+            <option value="<%=  sailboat.id%>"<%= "selected" if @task.sailboat.id == sailboat.id%>><%=  sailboat.name%></option>
+          <% end %>
+        <% end %> 
+        </optgroup>
+      <% end %>  
+    </select>
+  <br>
+  <h4>Members</h4>
+    <% @users.each do |user|%>
+      <input type="checkbox" name="task[user][]" id="" value="<%= user.id.to_i %>" <%= "checked" if @task.users.include?(user) %>>
+      <label for="task[user][]"><%= user.username %></label>
+      <br>
+    <% end %>
+  <br>
+  <h4>Date completed</h4>
+  <input type="datetime-local" name="task[date_completed" id="" value="<%= @task.date_completed.strftime("%Y-%m-%dT%H:%M") if @task.date_completed%>">
+  <h4>Due date</h4>
+  <input type="datetime-local" name="task[date_due]" id="" value="<%= @task.date_due.strftime("%Y-%m-%dT%H:%M") if @task.date_due%>">
+  <br>
+  <br> 
+  <button type="submit">Edit task</button>
+</form>

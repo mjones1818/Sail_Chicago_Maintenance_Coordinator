@@ -29,8 +29,13 @@
 <% end %>
 <br>
 <br>
+<form action="/tasks/<%= @task.id %>/edit" method="get">
+    <button type="submit">Edit this task</button>
+</form> 
+<br>
 <form action="/tasks/<%= @task.id %>/delete" method="post">
     <input id="hidden" type="hidden" name="_method" value="delete">
     <button type="submit">Delete this task</button>
 </form>
 
+<img src="sailchicagologo.png" width="500" height="500">
