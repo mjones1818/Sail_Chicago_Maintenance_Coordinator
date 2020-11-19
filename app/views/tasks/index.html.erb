@@ -1,24 +1,46 @@
 <h1>All Tasks</h1>
-
+  <h2>Completed: </h2>
   <table>
     <tr>
       <th>Boat Type</th>
       <th>Boat Name</th>
       <th>Task</th>
-      <th>Date</th>
-      
+      <th>Date Completed</th>
     </tr>
     <% @tasks.each do |task| %>
       <tr>
-        <td><%= task.sailboat.boat_type %></td>
-        <td><a href="/sailboats/<%= task.sailboat.id %>"><%= task.sailboat.name %></a></td>
-        <td><a href="/tasks/<%= task.id %>"><%= task.name %></a></td>
-        <td><%= task.date_completed || task.date_due %></td>
+        <% if task.date_completed %>
+          <td><%= task.sailboat.boat_type %></td>
+          <td><a href="/sailboats/<%= task.sailboat.id %>"><%= task.sailboat.name %></a></td>
+          <td><a href="/tasks/<%= task.id %>"><%= task.name %></a></td>
+          <td><%= task.date_completed.strftime("%d/%m/%y") %></td>
+          <td><%= task.date_due %></td>
+        <% end %>
       </tr>
     <% end %>
   </table>
 <br>
 <br>
+<h2>Tasks to complete</h2>
+<table>
+    <tr>
+      <th>Boat Type</th>
+      <th>Boat Name</th>
+      <th>Task</th>
+      <th>Due Date</th>
+    </tr>
+        <% @tasks.each do |task| %>
+      <tr>
+        <% if task.date_due %>
+          <td><%= task.sailboat.boat_type %></td>
+          <td><a href="/sailboats/<%= task.sailboat.id %>"><%= task.sailboat.name %></a></td>
+          <td><a href="/tasks/<%= task.id %>"><%= task.name %></a></td>
+          <td><%= task.date_due.strftime("%d/%m/%y") %></td>
+        <% end %>
+      </tr>
+    <% end %>
+
+</table>
 <form action="/tasks/new" method="get">
   <button type="submit">Create new task</button>
 </form>
