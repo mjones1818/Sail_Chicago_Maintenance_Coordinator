@@ -1,0 +1,21 @@
+<h1>Edit Part</h1>
+<br>
+<br>
+<form action="/parts/<%= @part.id %>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  <label for="part[name]">Name: </label>
+  <input type="text" name="part[name]" id="" value="<%= @part.name %>">
+  <br>
+  <br>
+  <label for="part[description]">Description: </label>
+  <input type="text" name="part[description]" id="" value="<%= @part.description %>">
+  <br>
+  <br>
+  <label for="part[location]">Location: </label>
+  <input type="text" name="part[location]" id="" value="<%= @part.location %>">
+  <br>
+
+<br>
+<br>
+<button type="submit">Edit part</button>
+</form>

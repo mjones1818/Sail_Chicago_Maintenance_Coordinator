@@ -13,7 +13,7 @@
           <td><%= task.sailboat.boat_type %></td>
           <td><a href="/sailboats/<%= task.sailboat.id %>"><%= task.sailboat.name %></a></td>
           <td><a href="/tasks/<%= task.id %>"><%= task.name %></a></td>
-          <td><%= task.date_completed.strftime("%d/%m/%y") %></td>
+          <td><%= format_date(task.date_completed) %></td>
           <td><%= task.date_due %></td>
         <% end %>
       </tr>
@@ -35,7 +35,7 @@
           <td><%= task.sailboat.boat_type %></td>
           <td><a href="/sailboats/<%= task.sailboat.id %>"><%= task.sailboat.name %></a></td>
           <td><a href="/tasks/<%= task.id %>"><%= task.name %></a></td>
-          <td><%= task.date_due.strftime("%d/%m/%y") %></td>
+          <td><%= format_date(task.date_due) %></td>
         <% end %>
       </tr>
     <% end %>

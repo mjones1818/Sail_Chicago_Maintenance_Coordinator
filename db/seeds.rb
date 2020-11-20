@@ -2,6 +2,7 @@ User.all.each {|record| record.destroy}
 Sailboat.all.each {|record| record.destroy}
 Task.all.each {|record| record.destroy}
 UserTask.all.each {|record| record.destroy}
+Part.all.each {|record| record.destroy}
 
 
 @user1 = User.create(:username => "Mike", :email => "Mike@email.com", :password => "password")
@@ -10,6 +11,9 @@ UserTask.all.each {|record| record.destroy}
 @user4 = User.create(:username => "Pat", :email => "Pat@email.com", :password => "password")
 @user5 = User.create(:username => "Arleen", :email => "Arleen@email.com", :password => "password")
 @user6 = User.create(:username => "Jim", :email => "Jim@email.com", :password => "password")
+
+@part1 = Part.create(name: "Rivet Gun", description: "Used for 1/8 diameter rivets", location: "Tool trailer")
+@part2 = Part.create(name: "1/8 diameter line", description: "Used for jib sheets", location: "Tool trailer")
 
 @boat1 = Sailboat.create(:name => "Albatross", :boat_type => "Colgate")
 @boat2 = Sailboat.create(:name => "Recess", :boat_type => "Colgate")
@@ -25,12 +29,14 @@ UserTask.all.each {|record| record.destroy}
 @task3 = Task.create(:name => "Replace rivets", :description => "replace the rivets", :date_completed => "8/12/2020", :sailboat_id => @boat2.id)
 @task4 = Task.create(:name => "inspect the shrouds", :description => "inspect the shrouds", :date_due => "5/12/2021", :sailboat_id => @boat1.id)
 @task5 = Task.create(:name => "Fill Gas", :description => "Fill the gas to the top", :date_completed => "7/12/2020", :sailboat_id => @boat1.id)
-@task6 = Task.create(:name => "Inventory below deck items", :description => "Inventory below deck items", :date_completed => "7/12/2020", :sailboat_id => @boat4.id)
+@task6 = Task.create(:name => "Replace jib sheet", :description => "Replace only jib sheet", :date_completed => "7/12/2020", :sailboat_id => @boat4.id)
 @task7 = Task.create(:name => "Inventory below deck items", :description => "Inventory below deck items", :date_completed => "7/12/2020", :sailboat_id => @boat7.id)
 @task8 = Task.create(:name => "Inventory below deck items", :description => "Inventory below deck items", :date_completed => "7/12/2020", :sailboat_id => @boat8.id)
 @task9 = Task.create(:name => "Inventory below deck items", :description => "Inventory below deck items", :date_completed => "7/12/2020", :sailboat_id => @boat6.id)
 @task10 = Task.create(:name => "Inventory below deck items", :description => "Inventory below deck items", :date_completed => "7/12/2020", :sailboat_id => @boat6.id)
 
+@task3.parts << @part1
+@task6.parts << @part2
 
 100.times do |task|
   Task.all.sample.users.push(User.all.sample)

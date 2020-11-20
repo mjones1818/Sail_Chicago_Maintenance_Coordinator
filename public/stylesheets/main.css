@@ -11,6 +11,15 @@
     width: 100%;
   }
 
+  table {
+    text-align: left;
+    column-gap: 5%;
+    column-gap: ;
+  }
+
+  table td , th{
+    padding-right: 15px;
+  }
   /* --- Welcome Page Styles --- */
   body {
     background-color: cornflowerblue;
@@ -23,7 +32,14 @@
     background-attachment: fixed;
     
   }
+  
+  a:link {
+    color: black;
+  }
 
+  a:visited {
+    color: black;
+  }
   .wrapper {
     background: #fff;
     -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
@@ -94,6 +110,7 @@
     padding: 0;
     overflow: hidden;
     background-color: #333;
+    height: 65px;
   }
   
   ul.nav_header li {
@@ -105,19 +122,22 @@
   #logoimage {
     height: 35px;
     max-height: 100%;
-    width: 35px;
+    width: 45px;
     max-width: 100%;
+    padding: 0px;
 }
 
-  
   ul.nav_header li a {
     display: block;
     color: white;
     text-align: center;
-    padding: 16px 16px;
+    padding: 25px 16px;
     text-decoration: none;
   }
   
+  ul.nav_header li #logoimage {
+    padding: 7px 16px 23px 10px ;
+  } 
   /* Change the link color to #111 (black) on hover */
   ul.nav_header li a:hover {
     background-color: #111;

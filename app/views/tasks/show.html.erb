@@ -9,10 +9,10 @@
 
 <% if @task.date_completed %>
     <h3>Date completed: </h3>
-    <%= @task.date_completed %>
+    <%= format_date(@task.date_completed) %>
 <% else %>
     <h3>Due date: </h3>
-    <%= @task.date_due %>
+    <%= format_date(@task.date_due) %>
 <% end %>
 <br>
 <br>
@@ -20,8 +20,19 @@
 <%= @task.procedure unless nil %>
 <br>
 <br>
+<h3>Parts used:</h3>
+<% if !@task.parts.empty? %>
+    
+        <% @task.parts.each do |part|%>
+            <a href="/parts/<%= part.id %>"><%=  part.name%> </a>
+            <br> 
+        <% end  %>
+<% end %>
+<br>
+<br>
+<h3>Completed by:</h3>
 <% if !@task.users.empty? %>
-    <h3>Completed by:</h3>
+    
         <% @task.users.each do |user|%>
             <a href="/users/<%= user.id %>"><%=  user.username%> </a>
             <br> 
@@ -37,5 +48,3 @@
     <input id="hidden" type="hidden" name="_method" value="delete">
     <button type="submit">Delete this task</button>
 </form>
-
-<img src="sailchicagologo.png" width="500" height="500">

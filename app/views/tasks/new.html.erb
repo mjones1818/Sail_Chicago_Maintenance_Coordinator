@@ -37,6 +37,13 @@
       <br>
     <% end %>
   <br>
+  <h4>Parts</h4>
+    <% @parts.each do |part|%>
+      <input type="checkbox" name="task[parts][]" id="" value="<%= part.id %>">
+      <label for="task[parts][]"><%= part.name %></label>
+      <br>
+    <% end %>
+  <br>
   <h4>Date completed</h4>
   <input type="datetime-local" name="task[date_completed" id="">
   <h4>Due date</h4>

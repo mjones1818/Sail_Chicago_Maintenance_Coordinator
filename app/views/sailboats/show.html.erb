@@ -7,7 +7,7 @@
 <ol>
   <% @sailboat.tasks.each do |task| %>
     <% if task.date_completed %>
-      <li><%= task.date_completed %> - <a href="/tasks/<%= task.id %>"><%= task.name %></a></li>
+      <li><%= format_date(task.date_completed) %> - <a href="/tasks/<%= task.id %>"><%= task.name %></a></li>
     <% end %>
   <% end %>
 </ol>
@@ -16,7 +16,7 @@
 <ol>
   <% @sailboat.tasks.each do |task| %>
     <% if task.date_due %>
-      <li><a href="/tasks/<%= task.id %>"><%= task.name %></a></li>
+      <li><%= format_date(task.date_due) %> - <a href="/tasks/<%= task.id %>"><%= task.name %></a></li>
     <% end %>
   <% end %>
 </ol>

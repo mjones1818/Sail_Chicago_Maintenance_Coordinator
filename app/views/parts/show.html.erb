@@ -1,0 +1,16 @@
+<h2><%= @part.name %></h2>
+<br>
+<br>
+<h4>Description</h4>
+<%= @part.description %>
+
+<br>
+<br>
+<form action="/parts/<%= @part.id %>/edit" method="get">
+  <button type="submit">Edit this part</button>
+</form>
+<br>
+<form action="/parts/<%= @part.id %>/delete" method="post">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <button type="submit">Delete this part</button>
+</form>

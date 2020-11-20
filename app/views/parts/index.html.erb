@@ -1,0 +1,21 @@
+<h1>All Parts</h1>
+
+<table>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+    <% @parts.each do |part| %>
+      <tr>
+        
+      <td><a href="/parts/<%= part.id %>"><%= part.name %></a></td>
+      <td><%= part.description %></td>
+   
+      </tr>
+    <% end %>
+  </table>
+  <br>
+  <br>
+  <form action="/parts/new" method="get">
+    <button type="submit">Create new part</button>
+  </form>
