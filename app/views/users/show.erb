@@ -13,7 +13,7 @@
 <% @user.tasks.each do |task| %>
   <ul>
     <% if task.date_completed %>
-      <li><%= task.date_completed %> - <a href="../tasks/<%= task.id %>"><%= task.name %></a></li>
+      <li><%= format_date(task.date_completed) %> - <a href="../tasks/<%= task.id %>"><%= task.name %></a></li>
     <% end %>
   </ul>
 <% end %>
@@ -23,7 +23,7 @@
 <% @user.tasks.each do |task| %>
   <ul>
     <% if task.date_due %>
-      <li><%= task.date_due %> - <a href="../tasks/<%= task.id %>"><%= task.name %></a></li>
+      <li><%= format_date(task.date_due) %> - <a href="../tasks/<%= task.id %>"><%= task.name %></a></li>
     <% end %>
   </ul>
 <% end %>

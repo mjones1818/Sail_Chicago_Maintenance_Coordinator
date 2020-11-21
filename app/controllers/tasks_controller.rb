@@ -1,5 +1,4 @@
 class TasksController < ApplicationController
-
   # GET: /tasks
   get "/tasks" do
     secure_page
@@ -23,10 +22,13 @@ class TasksController < ApplicationController
   # POST: /tasks
   post "/tasks" do
     secure_page
+    validate_data
     task_hash = params[:task].reject {|key, value| key == "user" || value == "" || key == "parts"}
     task = Task.create(task_hash)
     params[:task][:user].each {|user_id| task.users << User.find(user_id)}
-    params[:task][:parts].each {|part_id| task.parts << Part.find(part_id)}
+    if params[:task].key?(:parts)
+      params[:task][:parts].each {|part_id| task.parts << Part.find(part_id)}
+    end 
     task.save
     redirect "/tasks"
   end
@@ -66,4 +68,17 @@ class TasksController < ApplicationController
     task.destroy
     redirect "/tasks"
   end
+
+  private
+
+  def validate_data
+    if params[:task][:date_completed]== "" && params[:task][:date_due] == ""
+      flash.next[:message] = "You must enter enter a date"
+      redirect '/tasks/new'
+    elsif !params[:task].key?(:user)
+      flash.next[:message] = "You must select at least one user"
+      redirect '/tasks/new'
+    end
+  end
+
 end

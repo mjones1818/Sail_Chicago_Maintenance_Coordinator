@@ -33,7 +33,7 @@
 <h3>Completed by:</h3>
 <% if !@task.users.empty? %>
     
-        <% @task.users.each do |user|%>
+        <% @task.users.uniq.each do |user|%>
             <a href="/users/<%= user.id %>"><%=  user.username%> </a>
             <br> 
         <% end  %>

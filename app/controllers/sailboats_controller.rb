@@ -18,6 +18,7 @@ class SailboatsController < ApplicationController
 
   # POST: /sailboats
   post "/sailboats" do
+    validate_data
     Sailboat.create(params[:sailboat])
     redirect "/sailboats"
   end
@@ -49,5 +50,14 @@ class SailboatsController < ApplicationController
     sailboat = Sailboat.find(params[:id])
     sailboat.destroy
     redirect "/sailboats"
+  end
+
+  private
+
+  def validate_data
+    if params[:sailboat][:name]== "" || !params[:sailboat].key?(:boat_type)
+      flash.next[:message] = "You must enter enter a name and select a boat type"
+      redirect '/sailboats/new'
+    end
   end
 end
