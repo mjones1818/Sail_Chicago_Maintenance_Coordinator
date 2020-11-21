@@ -1,6 +1,16 @@
 <% if logged_in? %>
-  <h3>Welcome! You are logged in </h3>
-
+  <h3>Welcome! You are logged in as <%= current_user.username %></h3>
+  <br>
+    <h5>You can use this website to keep track of all maintenace performed on the Sail Chicago fleet!</h5>
+    
+ 
+  <br>
+  <ul class="bullet-list">
+    <li>You are allowed to view other <a href="/users">users</a> activity</li>
+    <li>View all <a href="/sailboats">sailboats</a> in the fleet and create a new one</li>
+    <li>View all <a href="/parts">parts</a> and create a new one</li>
+    <li>View all <a href="/tasks">tasks</a> and create a new one</li>
+  </ul>
   
 <% else %>
   <h3>Welcome! </h3><br>

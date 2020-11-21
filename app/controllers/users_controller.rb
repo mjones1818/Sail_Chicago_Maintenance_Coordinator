@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   end
 
   post "/signup" do
+    validate_data
     user = User.create(params[:user])
     session[:user_id] = user.id
     redirect "/"
@@ -70,5 +71,14 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     user.destroy
     redirect "/users"
+  end
+
+  private
+
+  def validate_data
+    if params[:user][:username]== "" || params[:user][:email]== "" || params[:user][:password]== ""
+      flash.next[:message] = "You must enter enter a username, email and password"
+      redirect '/signup'
+    end
   end
 end
