@@ -6,6 +6,10 @@ Download repository. Run the following to install the required dependencies
 
     bundle install
 
+To seed test data run 
+
+    rake db:seed
+
 In the project directory run 
 
     shotgun
