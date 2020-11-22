@@ -9,11 +9,13 @@
 <label for="sailboat[name]"> Sailboat name: </label>
 <input type="text" name="sailboat[name]" id="">
 <br>
+<br>
 <h4>Boat type: </h4>
+<br>
 
 <% BOAT_TYPES.each do |boat_type| %>
   <input type="radio" name="sailboat[boat_type]" id="<%= boat_type %>" value="<%= boat_type %>">
-  <label for="sailboat[boat_type]"><%= boat_type %></label> 
+  <label for="sailboat[boat_type]"><%= boat_type %></label>  <br>
 <% end %>
 
 <br>

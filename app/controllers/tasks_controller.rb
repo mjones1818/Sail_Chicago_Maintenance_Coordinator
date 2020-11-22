@@ -72,11 +72,18 @@ class TasksController < ApplicationController
   private
 
   def validate_data
+    binding.pry
     if params[:task][:date_completed]== "" && params[:task][:date_due] == ""
       flash.next[:message] = "You must enter enter a date"
       redirect '/tasks/new'
     elsif !params[:task].key?(:user)
       flash.next[:message] = "You must select at least one user"
+      redirect '/tasks/new'
+    elsif params[:task][:date_completed] != "" && params[:task][:date_due] != ""
+      flash.next[:message] = "You can not enter a due date and a date completed. Please enter one or the other"
+      redirect '/tasks/new'
+    elsif params[:task][:name]== ""
+      flash.next[:message] = "You must enter a name"
       redirect '/tasks/new'
     end
   end

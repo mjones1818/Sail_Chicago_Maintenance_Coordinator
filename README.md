@@ -35,7 +35,7 @@ A user can
 Features
 - redirected with an error if any field is left blank on submission
 
-# Users page
+# User index #
 A user can see
 - usernames
 - emails
@@ -43,9 +43,94 @@ Features
 - clicking email starts a new email message
 - clicking the username redirects to the user page
 
-## User show page
+#### User show page ####
 - username
 - email
 - tasks completed with dates and links
 - tasks to complete with dates and links
 - list of boats worked on with links
+Features
+- Edit and delete only if the user profile is the same as the logged in user
+
+# Sailboats index #
+A user can see 
+- all sailboats listed by boat type with links
+- create a new sailboat
+
+#### Sailboat show page ####
+- show all completed and upcoming tasks with dates and links
+- create, edit and delete buttons
+
+#### Sailboat new page ####
+A user can
+- enter a name (required)
+- select a boat type radio button (required)
+features
+- user is redirected back to page if not fully filled out
+
+#### Sailboat edit page ####
+A user can
+- edit a name (required)
+- select a boat type radio button (required)
+features
+- user is redirected back to page if not fully filled out
+
+# Parts index #
+A user can see 
+- all parts listed with links
+- create a new part
+
+#### Part show page ####
+- show name and description
+- edit and delete buttons
+
+#### Part new page ####
+A user can
+- enter a name (required)
+- enter a description
+features
+- user is redirected back to page if not fully filled out
+
+#### Part edit page ####
+A user can
+- edit a name (required)
+- edit a description
+features
+- user is redirected back to page if name isn't filled out
+
+# Tasks index #
+A user can see 
+- all Tasks listed with boat type, boat name, task name and date
+- create a new task
+
+#### Task show page ####
+- show name 
+- description
+- date completed or due date
+- procedure
+- all parts used
+- who completed the task
+- edit and delete buttons
+
+#### Task new page ####
+A user can
+- enter a name (required)
+- enter a description
+- enter a procedure
+- select a boat from a dropdown seperated by boat type
+- select all members involved
+- select all parts used
+- select either a due or completed date
+features
+- redirected with an error if any required field is left blank on submission
+
+#### Task edit page ####
+A user can
+- edit the name (required)
+- edit the description
+- edit the boat
+- edit the members
+- edit the date completed or due date
+features
+- redirected with an error if any required field is left blank on submission
+- prefilled with selections
