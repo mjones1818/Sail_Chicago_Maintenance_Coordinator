@@ -12,6 +12,10 @@ class UsersController < ApplicationController
 
   post "/signup" do
     validate_data
+    if User.find_by_username(params[:user][:username])
+      flash.next[:message] = "That username is already in use. Please select another"
+      redirect '/signup'
+    end
     user = User.create(params[:user])
     session[:user_id] = user.id
     redirect "/"

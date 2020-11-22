@@ -1,3 +1,22 @@
+# Description
+This website can be used to keep track of all maintenance activity at Sail Chicago. This includes all user activity, parts used and work history
+
+# Install instructions
+Download repository. Run the following to install the required dependencies
+
+    bundle install
+
+In the project directory run 
+
+    shotgun
+
+visit http://localhost:9393/
+
+### license
+
+This application available open source under the terms of the MIT license 
+https://opensource.org/licenses/MIT
+
 # Navigation bar
 A user can
 - go home
