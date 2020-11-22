@@ -46,6 +46,7 @@ class TasksController < ApplicationController
     @users = User.all
     @task =Task.find(params[:id])
     @sailboats = Sailboat.all
+    @parts = Part.all
     @boat_types = @sailboats.map {|sailboat| sailboat.boat_type}.uniq
     erb :"/tasks/edit.html"
   end
@@ -54,10 +55,14 @@ class TasksController < ApplicationController
   patch "/tasks/:id" do
     secure_page
     task = Task.find(params[:id])
-    task_hash = params[:task].reject {|key, value| key == "user" || value == ""}
+    task_hash = params[:task].reject {|key, value| key == "user" || value == "" || key == "parts"}
     task.update(task_hash)
     task.users.clear
     params[:task][:user].each {|user_id| task.users << User.find(user_id)}
+    if params[:task].key?(:parts)
+      task.parts.clear
+      params[:task][:parts].each {|part_id| task.parts << Part.find(part_id)}
+    end 
     redirect "/tasks/#{task.id}"
   end
 

@@ -14,7 +14,6 @@
           <td><a href="/sailboats/<%= task.sailboat.id %>"><%= task.sailboat.name %></a></td>
           <td><a href="/tasks/<%= task.id %>"><%= task.name %></a></td>
           <td><%= format_date(task.date_completed) %></td>
-          <td><%= task.date_due %></td>
         <% end %>
       </tr>
     <% end %>

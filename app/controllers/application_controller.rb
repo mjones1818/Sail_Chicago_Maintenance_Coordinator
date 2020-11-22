@@ -8,6 +8,7 @@ class ApplicationController < Sinatra::Base
     enable :sessions
     set :session_secret, "3799854cc3b550e3e49c"
   end
+
   register Sinatra::Flash
 
   get "/" do
@@ -39,11 +40,11 @@ class ApplicationController < Sinatra::Base
     end
 
     def format_date(date)
-      date.strftime("%d/%m/%y")
+      date.strftime("%m/%d/%y")
     end
 
     def format_date_time(date)
-      date.strftime("%d/%m/%y %H:%M")
+      date.strftime("%m/%d/%y %H:%M")
     end
   end
 
