@@ -4,8 +4,6 @@ This website can be used to keep track of all maintenance activity at Sail Chica
 # Install instructions
 Download repository 
 
-    git@github.com:mjones1818/Sail_Chicago_Maintenance_Coordinator.git
-
 Run the following to install the required dependencies
 
     bundle install
@@ -19,11 +17,6 @@ In the project directory run
     shotgun
 
 visit http://localhost:9393/
-
-### license
-
-This application available open source under the terms of the MIT license 
-https://opensource.org/licenses/MIT
 
 # Navigation bar
 A user can
@@ -161,3 +154,8 @@ A user can
 features
 - redirected with an error if any required field is left blank on submission
 - prefilled with selections
+
+# license
+
+This application available open source under the terms of the MIT license 
+https://opensource.org/licenses/MIT
