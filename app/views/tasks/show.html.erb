@@ -9,10 +9,10 @@
 
 <% if @task.date_completed %>
     <h3>Date completed: </h3>
-    <%= format_date(@task.date_completed) %>
+    <%= format_date_time(@task.date_completed) %>
 <% else %>
     <h3>Due date: </h3>
-    <%= format_date(@task.date_due) %>
+    <%= format_date_time(@task.date_due) %>
 <% end %>
 <br>
 <br>

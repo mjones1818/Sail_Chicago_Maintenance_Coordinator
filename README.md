@@ -1,8 +1,12 @@
 # Description
-This website can be used to keep track of all maintenance activity at Sail Chicago. This includes all user activity, parts used and work history
+This website can be used to keep track of all maintenance activity at Sail Chicago. This includes all user activity, parts and work history
 
 # Install instructions
-Download repository. Run the following to install the required dependencies
+Download repository 
+
+    git@github.com:mjones1818/Sail_Chicago_Maintenance_Coordinator.git
+
+Run the following to install the required dependencies
 
     bundle install
 

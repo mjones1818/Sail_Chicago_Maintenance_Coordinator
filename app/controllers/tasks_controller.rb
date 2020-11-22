@@ -72,7 +72,6 @@ class TasksController < ApplicationController
   private
 
   def validate_data
-    binding.pry
     if params[:task][:date_completed]== "" && params[:task][:date_due] == ""
       flash.next[:message] = "You must enter enter a date"
       redirect '/tasks/new'

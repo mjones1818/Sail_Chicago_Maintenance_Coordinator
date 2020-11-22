@@ -18,7 +18,7 @@ class PartsController < ApplicationController
     secure_page
     validate_data
     part = Part.create(params[:part])
-    redirect "/parts/#{part.id}"
+    redirect "/parts"
   end
 
   # GET: /parts/5

@@ -39,6 +39,10 @@ class ApplicationController < Sinatra::Base
     end
 
     def format_date(date)
+      date.strftime("%d/%m/%y")
+    end
+
+    def format_date_time(date)
       date.strftime("%d/%m/%y %H:%M")
     end
   end
