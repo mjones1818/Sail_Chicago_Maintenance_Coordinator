@@ -74,7 +74,7 @@ class UsersController < ApplicationController
     secure_page
     user = User.find(params[:id])
     user.destroy
-    redirect "/users"
+    redirect "/logout"
   end
 
   private
